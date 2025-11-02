@@ -1,0 +1,210 @@
+    *{
+        padding: 0%;
+        margin: 0%;
+        
+    }
+
+    .menu-color{
+        background-color: #0A0E0F;
+    }
+    .menu_area {
+        
+        width: 80%;
+        margin: 0 auto;
+        box-sizing: border-box;
+        flex-direction: column;
+        align-items: center;
+    }
+    header{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+        padding: 0.5rem;
+    }
+    header>p{
+        color: white;
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+    header>ul{
+        display: flex;
+    }
+    header>ul>li{
+        list-style-type: none;
+        margin-left: 2rem;
+    }
+    header>ul>li>a{
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        font-weight: 800;
+    }
+    header>ul>li>a:hover{
+        border-bottom: 5px solid gray;
+    }
+    @media screen and (max-width:1000px) {
+        header{
+            flex-direction: column;
+        }
+    }
+
+    .intro{
+        margin-top: 3rem;
+        padding: 0 3rem;
+        text-align: center;
+    }
+    .intro>p{
+        margin-bottom: 2rem;
+    }
+    .intro>p:first-child{
+        font-size: 2rem;
+        font-weight: 900;
+    }
+    .intro>p:last-of-type{
+        font-size: 1.3rem;
+        font-weight: 500;
+    }
+    .intro>a{
+        display: block;
+        border: 1px solid black;
+        width: 150px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: auto;
+        padding: 1rem;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+    .intro .content-intro>p{
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        gap: 20px;
+        
+    }
+    .intro .content-intro>p>a{
+        display: block;
+        border: 1px solid black;
+        width: 150px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin: 0 10px;
+        padding: 1rem;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+
+    .wrapper {
+        width: 90%;
+        max-width: 100%;
+        margin-inline: auto;
+        position: relative;
+        height: 240px;
+        margin-top: 2rem;
+        overflow: hidden;
+        mask-image: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 1) 20%,
+            rgba(0, 0, 0, 1) 80%,
+            rgba(0, 0, 0, 0)
+        );
+    }
+    @keyframes scrollLeft {
+        to {
+            left: -240px;
+        }
+    }
+
+    .item {
+        width: 200px;
+        height: 100px;
+        background-color: red;
+        border-radius: 4px;
+        position: absolute;
+        left: max(calc(200px * 10), 100%);
+        animation-name: scrollLeft;
+        animation-duration: 20s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+    }
+
+    .item1 {
+        animation-delay: calc(20s / 10 * (10 - 1) * -1);
+    }
+    .item1 img{
+        width: 100%;
+        border-radius: 4px;
+    }
+    .item2 {
+        animation-delay: calc(20s / 10 * (10 - 2) * -1);
+    }
+    .item2 img{
+        width: 100%;
+        border-radius: 4px;
+    }
+    .item3 {
+        animation-delay: calc(20s / 10 * (10 - 3) * -1);
+    }
+    .item3 img{
+        width: 100%;
+        border-radius: 4px;
+    }
+    .item4 {
+        animation-delay: calc(20s / 10 * (10 - 4) * -1);
+    }
+    .item4 img{
+        width: 100%;
+        border-radius: 4px;
+    }
+    .item5 {
+        animation-delay: calc(20s / 10 * (10 - 5) * -1);
+    }
+    .item5 img{
+        width: 100%;
+        border-radius: 4px;
+    }
+    .item6 {
+        animation-delay: calc(20s / 10 * (10 - 6) * -1);
+    }
+    .item6 img{
+        width: 100%;
+        border-radius: 4px;
+    }
+    .item7 {
+        animation-delay: calc(20s / 10 * (10 - 7) * -1);
+    }   
+    .item7 img{
+        width: 100%;
+        border-radius: 4px;
+    }
+    .item8 {
+        animation-delay: calc(20s / 10 * (10 - 8) * -1);
+    }
+    .item8 img{
+        width: 100%;
+        border-radius: 4px;
+    }
+    .item9 {
+        animation-delay: calc(20s / 10 * (10 - 9) * -1);
+    }
+    .item9 img{
+        width: 100%;
+        border-radius: 4px;
+    }
+    .item10 {
+        animation-delay: calc(20s / 10 * (10 - 10) * -1);
+    }
+    .item10 img{
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .footer{
+        margin-top: 4rem;
+        text-align: center;
+        background-color: #199C6E;
+        width: 100%;
+        padding: 2rem;
+    }
