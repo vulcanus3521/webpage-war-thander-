@@ -1,7 +1,11 @@
     *{
         padding: 0%;
         margin: 0%;
-        
+        color: white;
+    }
+
+    body{
+        background-color: #161617;
     }
 
     .menu-color{
@@ -47,6 +51,10 @@
         header{
             flex-direction: column;
         }
+    }
+
+    .main_video{
+        text-align: center;
     }
 
     .intro{
@@ -204,7 +212,7 @@
     .footer{
         margin-top: 4rem;
         text-align: center;
-        background-color: #199C6E;
+        background-color: #0A0E0F;
         width: 100%;
         padding: 2rem;
     }
