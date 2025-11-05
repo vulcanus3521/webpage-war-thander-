@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>War Thunder Filters 예시</title>
+    <!-- 페이지 전체 기본 스타일 -->
+    <style>
+        /* 전체 영역을 조금 보기 좋게 */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f5f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        /* 필터 전체를 감싸는 박스 */
+        .unit-filters {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* 오른쪽으로 밀어내는 용도 */
+        .flex-grow-1 {
+            flex: 1;
+        }
+
+        /* 버튼 스타일 공통 */
+        .btn,
+        .unit-filter,
+        .form-select-sm {
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            padding: 6px 10px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        /* 세로 구분선 */
+        .vr {
+            width: 1px;
+            height: 24px;
+            background: #ddd;
+        }
+
+        /* 보기 전환 버튼들 */
+        .unit-filters_view {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* 활성화된 버튼 표시 */
+        .unit-filters_view.active {
+            background: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        /* 드롭다운 컨테이너 기본값: 숨김 */
+        .dropdown-menu {
+            position: absolute;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 6px 0;
+            margin-top: 4px;
+            min-width: 160px;
+            display: none; /* JS로 열고 닫음 */
+            z-index: 10;
+        }
+
+        /* 드롭다운 안의 버튼 */
+        .dropdown-item {
+            width: 100%;
+            border: none;
+            background: none;
+            text-align: left;
+            padding: 6px 12px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .dropdown-item:hover {
+            background: #f1f1f1;
+        }
+
+        /* 드롭다운을 열 때 쓸 클래스 */
+        .show {
+            display: block;
+        }
+
+        /* 모바일에서 SVG가 너무 붙지 않게 */
+        svg {
+            vertical-align: middle;
+        }
+
+        /* 간단한 오프캔버스(옆에서 나오는 메뉴) 흉내 */
+        .offcanvas-menu {
+            position: fixed;
+            top: 0;
+            right: -320px; /* 처음엔 화면 밖 */
+            width: 320px;
+            height: 100%;
+            background: #fff;
+            box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+            transition: right 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .offcanvas-menu.show {
+            right: 0; /* 열리면 화면 안으로 */
+        }
+        .offcanvas-menu_header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 1px solid #eee;
+            font-weight: bold;
+        }
+        .offcanvas-body {
+            padding: 12px 16px;
+            overflow-y: auto;
+        }
+
+        /* 필터 안에서 드롭다운 버튼들 세로 정렬 */
+        .offcanvas-body .dropdown-center {
+            margin-bottom: 12px;
+            position: relative;
+        }
+
+        /* 간단한 브레이크포인트 */
+        @media (max-width: 600px) {
+            .unit-filters {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 전체 필터 영역 -->
+<div id="wt-filters-panel" class="unit-filters">
+
+    <!-- 오른쪽 공간 채우기용 -->
+    <div class="flex-grow-1"></div>
+
+    <!-- BR 모드 드롭다운 버튼 -->
+    <div class="dropdown-center unit-br-modes" style="position: relative;">
+        <button id="wt-br-mode-btn" class="form-select-sm">RB</button>
+        <!-- 실제로 열릴 목록 -->
+        <div id="wt-br-mode-items" class="dropdown-menu">
+            <button type="button" class="dropdown-item" data-br-id="ab" data-br-sname="AB">Arcade Battles</button>
+            <button type="button" class="dropdown-item" data-br-id="rb" data-br-sname="RB">Realistic Battles</button>
+            <button type="button" class="dropdown-item" data-br-id="trb" data-br-sname="TRB">Realistic Battles (tanks)</button>
+            <button type="button" class="dropdown-item" data-br-id="sb" data-br-sname="SB">Simulator Battles</button>
+            <button type="button" class="dropdown-item" data-br-id="tsb" data-br-sname="TSB">Simulator Battles (tanks)</button>
+        </div>
+    </div>
+
+    <div class="vr"></div>
+
+    <!-- 트리 보기 버튼 -->
+    <button id="wt-show-tree" class="unit-filters_view" title="Tree">
+        <!-- 아이콘 대신 텍스트 -->
+        <span class="d-none d-sm-block">Tree</span>
+    </button>
+
+    <!-- 리스트 보기 버튼(기본 active) -->
+    <button id="wt-show-list" class="unit-filters_view active" title="List">
+        <span class="d-none d-sm-block">List</span>
+    </button>
+
+    <!-- 필터 전체 여는 버튼 (오프캔버스) -->
+    <button id="open-filter-menu" class="unit-filter">
+        Filters
+    </button>
+</div>
+
+<!-- 오른쪽에서 나오는 필터 메뉴 -->
+<div id="filter-menu" class="offcanvas-menu">
+    <div class="offcanvas-menu_header">
+        <span>Vehicle filter</span>
+        <button id="close-filter-menu" class="btn">X</button>
+    </div>
+    <div class="offcanvas-body">
+        <!-- 국가 드롭다운 -->
+        <div class="dropdown-center" style="position: relative;">
+            <button class="unit-filter country-btn">Nation ▼</button>
+            <div class="dropdown-menu">
+                <button class="dropdown-item" data-country-id="usa">USA</button>
+                <button class="dropdown-item" data-country-id="germany">Germany</button>
+                <button class="dropdown-item" data-country-id="ussr">USSR</button>
+                <button class="dropdown-item" data-country-id="britain">Great Britain</button>
+                <button class="dropdown-item" data-country-id="japan">Japan</button>
+                <button class="dropdown-item" data-country-id="china">China</button>
+                <button class="dropdown-item" data-country-id="italy">Italy</button>
+                <button class="dropdown-item" data-country-id="france">France</button>
+                <button class="dropdown-item" data-country-id="sweden">Sweden</button>
+                <button class="dropdown-item" data-country-id="israel">Israel</button>
+            </div>
+        </div>
+
+        <!-- 역할 드롭다운 -->
+        <div class="dropdown-center" style="position: relative;">
+            <button class="unit-filter role-btn">Roles ▼</button>
+            <div class="dropdown-menu">
+                <button class="dropdown-item" data-collection-id="7">Fighter</button>
+                <button class="dropdown-item" data-collection-id="8">Jet fighter</button>
+                <button class="dropdown-item" data-collection-id="12">Bomber</button>
+                <button class="dropdown-item" data-collection-id="11">Strike aircraft</button>
+                <button class="dropdown-item" data-collection-id="9">Naval aircraft</button>
+                <!-- 필요한 만큼 추가 -->
+            </div>
+        </div>
+
+        <!-- Rank 드롭다운 -->
+        <div class="dropdown-center" style="position: relative;">
+            <button class="unit-filter rank-btn">Rank ▼</button>
+            <div class="dropdown-menu">
+                <button class="dropdown-item" data-rank-id="1">I</button>
+                <button class="dropdown-item" data-rank-id="2">II</button>
+                <button class="dropdown-item" data-rank-id="3">III</button>
+                <button class="dropdown-item" data-rank-id="4">IV</button>
+                <button class="dropdown-item" data-rank-id="5">V</button>
+                <button class="dropdown-item" data-rank-id="6">VI</button>
+                <button class="dropdown-item" data-rank-id="7">VII</button>
+                <button class="dropdown-item" data-rank-id="8">VIII</button>
+            </div>
+        </div>
+
+        <!-- 상태 드롭다운 -->
+        <div class="dropdown-center" style="position: relative;">
+            <button class="unit-filter status-btn">Status ▼</button>
+            <div class="dropdown-menu">
+                <button class="dropdown-item" data-status-id="0">Regular vehicle</button>
+                <button class="dropdown-item" data-status-id="1">Premium vehicle</button>
+                <button class="dropdown-item" data-status-id="2">Squadron vehicle</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 아주 간단한 동작을 위한 JS -->
+<script>
+    // ========== BR 드롭다운 열고 닫기 ==========
+    const brBtn = document.getElementById('wt-br-mode-btn');
+    const brMenu = document.getElementById('wt-br-mode-items');
+
+    brBtn.addEventListener('click', () => {
+        brMenu.classList.toggle('show');
+    });
+
+    // 드롭다운 항목 클릭 시 버튼 글자 바꾸기
+    brMenu.querySelectorAll('.dropdown-item').forEach(item => {
+        item.addEventListener('click', () => {
+            const shortName = item.getAttribute('data-br-sname');
+            brBtn.textContent = shortName;
+            brMenu.classList.remove('show');
+        });
+    });
+
+    // ========== 보기 전환 버튼 (Tree / List) ==========
+    const treeBtn = document.getElementById('wt-show-tree');
+    const listBtn = document.getElementById('wt-show-list');
+
+    treeBtn.addEventListener('click', () => {
+        treeBtn.classList.add('active');
+        listBtn.classList.remove('active');
+        // 실제로는 여기서 목록을 트리 형태로 바꾸는 코드를 추가하면 됨
+        console.log('Tree view 선택됨');
+    });
+
+    listBtn.addEventListener('click', () => {
+        listBtn.classList.add('active');
+        treeBtn.classList.remove('active');
+        // 실제로는 여기서 목록을 리스트 형태로 바꾸는 코드를 추가하면 됨
+        console.log('List view 선택됨');
+    });
+
+    // ========== 오른쪽 필터(offcanvas) 열고 닫기 ==========
+    const openFilterBtn = document.getElementById('open-filter-menu');
+    const closeFilterBtn = document.getElementById('close-filter-menu');
+    const filterMenu = document.getElementById('filter-menu');
+
+    openFilterBtn.addEventListener('click', () => {
+        filterMenu.classList.add('show');
+    });
+
+    closeFilterBtn.addEventListener('click', () => {
+        filterMenu.classList.remove('show');
+    });
+
+    // ========== 오프캔버스 안의 드롭다운들 공통 동작 ==========
+    // 버튼을 클릭하면 자기 바로 아래 있는 dropdown-menu를 열어주는 방식
+    document.querySelectorAll('.offcanvas-body .dropdown-center > button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const menu = btn.nextElementSibling;
+            menu.classList.toggle('show');
+        });
+    });
+
+    // 화면 아무데나 클릭하면 위의 작은 드롭다운 닫기 (간단 버전)
+    document.addEventListener('click', (e) => {
+        // BR 드롭다운 영역 밖을 클릭하면 닫기
+        if (!brBtn.contains(e.target) && !brMenu.contains(e.target)) {
+            brMenu.classList.remove('show');
+        }
+    });
+</script>
+
+</body>
+</html>
