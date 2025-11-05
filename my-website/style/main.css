@@ -12,7 +12,7 @@
         background-color: #0A0E0F;
     }
     .menu_area {
-        
+        height: 80px;
         width: 80%;
         margin: 0 auto;
         box-sizing: border-box;
@@ -45,7 +45,7 @@
         font-weight: 800;
     }
     header>ul>li>a:hover{
-        border-bottom: 5px solid gray;
+        border-bottom: 2px solid gray;
     }
     @media screen and (max-width:100%) {
         header{
