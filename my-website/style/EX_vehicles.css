@@ -14,6 +14,13 @@ body {
     padding: 0 16px;
 }
 
+.unit-list {
+    padding: 0;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    background: #1c1f24;
+}
+
 /* =============================
    테이블 기본
 ============================= */
@@ -21,20 +28,30 @@ body {
     width: 100%;
     border-collapse: collapse;
     background: #1c1f24;
-    border: 1px solid #2a2e35;
     border-radius: 6px;
     table-layout: fixed;
 }
 
-.wt-ulist_instance tr {
-    border-bottom: 1px solid #2a2e35;
+.wt-ulist_instance tbody tr {
+    border-bottom: 1px solid #9999;
 }
+
 
 /* =============================
    헤더
 ============================= */
 .wt-ulist_header {
     background: #22262d;
+}
+
+.wt-ulist_header th {
+    border-right: 1px solid #9999;  /* 오른쪽 선 */
+    padding: 8px 12px;
+}
+
+/* 마지막 th는 오른쪽 선 제거 */
+.wt-ulist_header th:last-child {
+    border-right: none;
 }
 
 .wt-ulist_header-button {
