@@ -1,122 +1,103 @@
-*{
-        padding: 0%;
-        margin: 0%;
+    /* ===========================
+    기본 설정
+    - 모든 요소의 기본 여백 제거
+    - 전체 글자색을 흰색으로 통일
+    =========================== */
+    * {
+        padding: 0;
+        margin: 0;
         color: white;
     }
+    body {
+        background-color: #161617; /* 사이트 전체 배경색 */
+    }
+    /* ========================================================================== */
 
-    body{
-        background-color: #161617;
+
+
+    /* ===========================
+    헤더 (로고 + 메뉴)
+    =========================== */
+    .header__wrapper {
+        background-color: #0A0E0F; /* 헤더의 배경 */
     }
 
-    .menu-color{
-        background-color: #0A0E0F;
-    }
-    .menu_area {
-        height: 80px;
+    .header__area {
+        height: auto;
         width: 80%;
-        margin: 0 auto;
-        box-sizing: border-box;
-        flex-direction: column;
-        align-items: center;
+        margin: 0 auto;        /* 가운데 정렬 */
+        box-sizing: border-box; /* padding 포함해서 전체 너비 계산 */
     }
-    header{
-        display: flex;
-        justify-content: space-between;
+
+    /* header 내부 정렬 */
+    header {
+        display: flex;                    /* 로고(왼쪽) + 메뉴(오른쪽)을 가로 배치 */
+        justify-content: space-between;   /* 양쪽 끝으로 배치 */
+        align-items: center;              /* 세로 방향 가운데 정렬 */
         width: 100%;
-        align-items: center;
         padding: 0.5rem;
     }
-    header>p{
-        color: white;
+
+    /* 로고 텍스트 */
+    header > p {
         font-size: 2.5rem;
         font-weight: 700;
     }
-    header>ul{
-        display: flex;
+
+    /* 메뉴 목록 */
+    header > ul {
+        display: flex; /* 메뉴를 가로로 나열 */
     }
-    header>ul>li{
-        list-style-type: none;
+    header > ul > li {
+        list-style: none;
         margin-left: 2rem;
     }
-    header>ul>li>a{
+    header > ul > li > a {
         color: white;
         text-decoration: none;
         font-size: 1rem;
         font-weight: 800;
     }
-    header>ul>li>a:hover{
-        border-bottom: 5px solid gray;
+    header > ul > li > a:hover {
+        border-bottom: 2px solid gray; /* hover 시 밑줄 효과 */
+        color: #92d3f9; /* hover 시 더 밝은색으로 */
     }
-    @media screen and (max-width:100%) {
-        header{
-            flex-direction: column;
-        }
-    }
-
-    .main_button{
+    
+    /* ===========================
+    메인 버튼 hover 효과
+    =========================== */
+    .main_button {
         display: flex;
         justify-content: center;
-        text-align: center;
         gap: 20px;
-        width: 90%;
-        max-width: 100%;
-        margin-inline: auto;
-        position: relative;
         margin-top: 2rem;
     }
-    /* 
-    각 버튼을 감싸는 div
-    - position: relative → 내부에서 before/after 위치 제어용
-    */
-    .main_button div {
-        position: relative;
-        display: inline-block;
-    }
 
-    /* 
-    a 태그 설정
-    - 오버레이를 이미지 뒤에 넣기 위해 relative 설정
-    */
     .main_button a {
-        position: relative;
+        position: relative; /* ::before가 이 안에서 위치하도록 기준 제공 */
         display: inline-block;
     }
 
-    /* 
-    하늘색 그라데이션 배경 (이미지 '뒤'에 위치)
-    - ::before를 사용하고 z-index로 뒤로 보냄
-    */
+    /* hover 시 나타나는 파란빛 배경 */
     .main_button a::before {
         content: "";
         position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(135deg, rgba(135, 206, 250, 0.5), rgba(0, 191, 255, 0.5));
-        opacity: 0;
-        transition: opacity 0.3s ease;
-        z-index: 0; /* 뒤쪽으로 */
+        inset: 0;
+        background: linear-gradient(135deg, rgba(135,206,250,0.5), rgba(0,191,255,0.5));
+        opacity: 0; 
         border-radius: 10px;
+        transition: opacity 0.3s ease;
+        z-index: 0; /* 이미지 아래에 깔림 */
     }
 
-    /* 
-    이미지 설정
-    - z-index: 1 로 그라데이션 위에 표시되도록 함
-    - pointer-events: none 을 제거해 클릭이 정상 동작하게
-    */
+    .main_button a:hover::before {
+        opacity: 1; /* hover → 파란빛 등장 */
+    }
+
+    /* 버튼 이미지 */
     .main_button img {
-        display: block;
         position: relative;
-        z-index: 1; /* 이미지가 위로 */
-        width: auto;
-        height: auto;
+        z-index: 1; /* hover 배경보다 위에 보이게 함 */
         transition: transform 0.3s ease;
     }
 
-    /* 
-    hover 시 하늘색 그라데이션 보이기
-    */
-    .main_button a:hover::before {
-        opacity: 1;
-    }
