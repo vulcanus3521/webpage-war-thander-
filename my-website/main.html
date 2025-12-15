@@ -4,154 +4,172 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to My Website</title>
+    <!-- CSS 파일 연결 -->
     <link rel="stylesheet" href="style/main.css">
-
-    <!--<link rel="stylesheet" href="ex_style.css">-->
-
 </head>
 <body>
     
+    <!-- 헤더 영역 시작 -->
     <div class="header__wrapper">
         <div class="header__area">
             <header>
+                <!-- 웹사이트 제목 -->
                 <p>Welcome to My Website</p>
+                <!-- 네비게이션 메뉴 -->
                 <ul>
                     <li><a href="main.html">Home</a></li>
                     <li><a href="vehicles.html">vehicles</a></li>
+                    <!-- 외부 링크: 스토어 -->
                     <li><a href="https://store.gaijin.net/catalog.php?category=WarThunder&partner=Wiki&partner_val=mufby3bs" target="_blank">store</a></li>
+                    <!-- 외부 링크: 게임 플레이 -->
                     <li><a href="https://warthunder.com/en/play4free?r=wiki" target="_blank">play</a></li>
                 </ul>
             </header>
         </div>
     </div>
+    <!-- 헤더 영역 끝 -->
 
+    <!-- 메인 비디오 영역 -->
     <div class="main_video">
         <video width="100%" muted autoplay loop>
+            <!-- 비디오 파일 경로 -->
             <source src="vdieo/main.webm" type="video/webm">
         </video>
     </div>
     
+    <!-- 사이트 소개 문구 -->
     <div class="intro">
-    <p>2500개 이상의 플래이 가능한 장비</p>
-    <p>지상 장비, 항공기, 헬리콥터, 그리고 함선까지</p>
+        <p>2500개 이상의 플래이 가능한 장비</p>
+        <p>지상 장비, 항공기, 헬리콥터, 그리고 함선까지</p>
     </div>
 
     <br>
     <br>
 
-	<div class="slider__country">
-  		<div class="item item1"><img src="images/country/USA(미국).png" alt=""></div>
-  		<div class="item item2"><img src="images/country/Germany(독일).png" alt=""></div>
-  		<div class="item item3"><img src="images/country/USSR(소련).png" alt=""></div>
-  		<div class="item item4"><img src="images/country/United Kingdom(영국).png" alt=""></div>
-  		<div class="item item5"><img src="images/country/Japan(일본).png" alt=""></div>
-  		<div class="item item6"><img src="images/country/China(중국).png" alt=""></div>
+    <!-- 국가 슬라이더 / 이미지 리스트 -->
+    <div class="slider__country">
+        <div class="item item1"><img src="images/country/USA(미국).png" alt=""></div>
+        <div class="item item2"><img src="images/country/Germany(독일).png" alt=""></div>
+        <div class="item item3"><img src="images/country/USSR(소련).png" alt=""></div>
+        <div class="item item4"><img src="images/country/United Kingdom(영국).png" alt=""></div>
+        <div class="item item5"><img src="images/country/Japan(일본).png" alt=""></div>
+        <div class="item item6"><img src="images/country/China(중국).png" alt=""></div>
         <div class="item item7"><img src="images/country/Italy(이탈리아).png" alt=""></div>
-  		<div class="item item8"><img src="images/country/France(프랑스).png" alt=""></div>
-  		<div class="item item9"><img src="images/country/Sweden(스웨덴).png" alt=""></div>
-  		<div class="item item10"><img src="images/country/Israel(이스라엘).png" alt=""></div>
-	</div>
+        <div class="item item8"><img src="images/country/France(프랑스).png" alt=""></div>
+        <div class="item item9"><img src="images/country/Sweden(스웨덴).png" alt=""></div>
+        <div class="item item10"><img src="images/country/Israel(이스라엘).png" alt=""></div>
+    </div>
 
+    <!-- 메인 버튼 영역 -->
     <div class="main_button">
+        <!-- 항공기 버튼 -->
         <div class="main_air"><a href="vehicles/air/air.html"><img src="images/main_button/main_button_aircraft_en.png" alt=""></a></div>
+        <!-- 헬리콥터 버튼 -->
         <div class="main_heli"><a href="vehicles/heli/heli.html"><img src="images/main_button/main_button_helicopter_en.png" alt=""></a></div>       
+        <!-- 전차 버튼 -->
         <div class="main_tanks"><a href="vehicles/tanks/tanks.html"><img src="images/main_button/main_button_tank_en.png" alt=""></a></div>
+        <!-- 함선 버튼 -->
         <div class="main_ships"><a href="vehicles/ships/ships.html"><img src="images/main_button/main_button_ship_en.png" alt=""></a></div>
+        <!-- 고속정/보트 버튼 -->
         <div class="main_boats"><a href="vehicles/boats/boats.html"><img src="images/main_button/main_button_boat_en.png" alt=""></a></div>
     </div>
 
-	<br><br>
+    <br><br>
 
+    <!-- 게임 설명 영역 -->
     <div class="game section">
-    <div class="game__description">
-    <p>War Thunder는 제 2차 세계대전부터 현대전까지의 항공기, 전차, 함선, 헬리콥터를 플레이 할 수 있는 온라인 게임 역사상 가장 거대한 스케일과 Windows, Linux, Mac, PlayStation®4, PlayStation®5, Xbox One 그리고 Xbox Series X|S 에 이르는 광범위한 크로스 플랫폼 기능을 자랑하는 밀리터리 MMO 게임입니다. 지금 게임에 참여하셔서 War Thunder가 제공하는 지상, 공중, 해상의 거대한 전장 서사시에 직접 참여하십시오.</p>
+        <div class="game__description">
+            <p>War Thunder는 제 2차 세계대전부터 현대전까지의 항공기, 전차, 함선, 헬리콥터를 플레이 할 수 있는 온라인 게임 역사상 가장 거대한 스케일과 Windows, Linux, Mac, PlayStation®4, PlayStation®5, Xbox One 그리고 Xbox Series X|S 에 이르는 광범위한 크로스 플랫폼 기능을 자랑하는 밀리터리 MMO 게임입니다. 지금 게임에 참여하셔서 War Thunder가 제공하는 지상, 공중, 해상의 거대한 전장 서사시에 직접 참여하십시오.</p>
 
-    <p>War Thunder 에서는 현실적으로 디자인된 전장에 여러분이 직접 운용할 수 있는 2,500여 대 이상의 항공기, 전차, 헬리콥터, 함선이 한 데 어우러져 복합적인 전장을 만들어 냅니다. 요격기로부터 당신의 폭격기를 방어하는 기총 사수가 될 수도 있고, 적의 공습으로부터 아군을 엄호하는 대공화기 사수가 될 수도 있으며, 로켓 샤워를 통해 적의 항공기를 제압하는 파일럿이 되거나 고속정을 이용하여 적의 군함을 기습하는 함장이 될 수도 있습니다.</p>
+            <p>War Thunder 에서는 현실적으로 디자인된 전장에 여러분이 직접 운용할 수 있는 2,500여 대 이상의 항공기, 전차, 헬리콥터, 함선이 한 데 어우러져 복합적인 전장을 만들어 냅니다. 요격기로부터 당신의 폭격기를 방어하는 기총 사수가 될 수도 있고, 적의 공습으로부터 아군을 엄호하는 대공화기 사수가 될 수도 있으며, 로켓 샤워를 통해 적의 항공기를 제압하는 파일럿이 되거나 고속정을 이용하여 적의 군함을 기습하는 함장이 될 수도 있습니다.</p>
+        </div>
+
+        <!-- 게임 특징 제목 -->
+        <div class="game-title game__title">게임의 특징</div>
+
+        <!-- 게임 특징 리스트 -->
+        <ul class="game__info-wrapper">
+            <!-- 각 특징 항목 -->
+            <li class="game__info game-info">
+                <svg class="game-info__icon game-info__icon--card-airplane"> 
+                    <use href="images/icon-card-airplane.svg"></use> 
+                </svg>
+                <div class="game-info__content">
+                    <p>역사적 문서와 사료를 기반으로 훌륭하게 구현된 2,500대가 넘는 항공기, 헬리콥터, 전차 그리고 함선.</p>
+                </div>
+            </li>
+
+            <li class="game__info game-info">
+                <svg class="game-info__icon game-info__icon--update"> 
+                    <use href="images/icon-update.svg"></use> 
+                </svg>
+                <div class="game-info__content">
+                    <p>새로운 장비, 전장, 임무와 국가를 포함한 정기적인 컨텐츠 업데이트.</p>
+                </div>
+            </li>
+
+            <li class="game__info game-info">
+                <svg class="game-info__icon game-info__icon--globus"> 
+                    <use href="images/icon-globus.svg"></use> 
+                </svg>
+                <div class="game-info__content">
+                    <p>역사적으로 유명한 전장을 포함한 140곳이 7넘는 전장.</p>
+                </div>
+            </li>
+
+            <li class="game__info game-info">
+                <svg class="game-info__icon game-info__icon--cross-platform"> 
+                    <use href="images/icon-cross-platform.svg"></use> 
+                </svg>
+                <div class="game-info__content">
+                    <p>Windows PC, Linux, Mac, PlayStation®4, PlayStation®5, Xbox One 그리고 Xbox Series X|S유저 모두 같은 게임과 같은 전장에서 만날 수 있는 크로스 플랫폼 기능.</p>
+                </div>
+            </li>
+
+            <li class="game__info game-info">
+                <svg class="game-info__icon game-info__icon--network"> 
+                    <use href="images/icon-network.svg"></use> 
+                </svg>
+                <div class="game-info__content">
+                    <p>플레이 스타일과 경험에 따라 다른 난이도를 선택하여 참여할 수 있는 격렬한 풀 스케일 PvP 전투.</p>
+                </div>
+            </li>
+
+            <li class="game__info game-info">
+                <svg class="game-info__icon game-info__icon--movie"> 
+                    <use href="images/icon-movie.svg"></use> 
+                </svg>
+                <div class="game-info__content">
+                    <p>미려한 그래픽, 훌륭한 사운드 이펙트와 아름다운 배경음악의 조화가 만들어내는 실감나는 전장 환경.</p>
+                </div>
+            </li>
+
+            <li class="game__info game-info">
+                <svg class="game-info__icon game-info__icon--check-list"> 
+                    <use href="images/icon-check-list.svg"></use> 
+                </svg>
+                <div class="game-info__content">
+                    <p>역사적 캠페인과 싱글플레이 미션을 포함한 풍부한 PvE 컨텐츠.</p>
+                </div>
+            </li>
+
+            <li class="game__info game-info">
+                <svg class="game-info__icon game-info__icon--handshake"> 
+                    <use href="images/icon-handshake.svg"></use> 
+                </svg>
+                <div class="game-info__content">
+                    <p><a href="https://live.warthunder.com/?lang=en">War Thunder Live</a>
+                        를 통해 자신만의 War Thunder 컨텐츠를 다른 플레이어와 공유할 수 있으며 인기있는 커스텀 컨텐츠는 수익 공유 파트너 프로그램을 통한 수익 창출도 가능합니다!</p>
+                </div>
+            </li>
+
+        </ul>
     </div>
 
-    <div class="game-title game__title">게임의 특징</div>
-
-    <ul class="game__info-wrapper">
-        <li class="game__info game-info">
-            <svg class="game-info__icon game-info__icon--card-airplane"> 
-                <use href="images/icon-card-airplane.svg"></use> 
-            </svg>
-        <div class="game-info__content">
-        <p>역사적 문서와 사료를 기반으로 훌륭하게 구현된 2,500대가 넘는 항공기, 헬리콥터, 전차 그리고 함선.</p>
-        </div>
-        </li>
-
-        <li class="game__info game-info">
-            <svg class="game-info__icon game-info__icon--update"> 
-                <use href="images/icon-update.svg"></use> 
-            </svg>
-        <div class="game-info__content">
-        <p>새로운 장비, 전장, 임무와 국가를 포함한 정기적인 컨텐츠 업데이트.</p>
-        </div>
-        </li>
-
-        <li class="game__info game-info">
-            <svg class="game-info__icon game-info__icon--globus"> 
-                <use href="images/icon-globus.svg"></use> 
-            </svg>
-        <div class="game-info__content">
-        <p>역사적으로 유명한 전장을 포함한 140곳이 7넘는 전장.</p>
-        </div>
-        </li>
-
-        <li class="game__info game-info">
-            <svg class="game-info__icon game-info__icon--cross-platform"> 
-                <use href="images/icon-cross-platform.svg"></use> 
-            </svg>
-        <div class="game-info__content">
-        <p>Windows PC, Linux, Mac, PlayStation®4, PlayStation®5, Xbox One 그리고 Xbox Series X|S유저 모두 같은 게임과 같은 전장에서 만날 수 있는 크로스 플랫폼 기능.</p>
-        </div>
-        </li>
-
-        <li class="game__info game-info">
-            <svg class="game-info__icon game-info__icon--network"> 
-                <use href="images/icon-network.svg"></use> 
-            </svg>
-        <div class="game-info__content">
-        <p>플레이 스타일과 경험에 따라 다른 난이도를 선택하여 참여할 수 있는 격렬한 풀 스케일 PvP 전투.</p>
-        </div>
-        </li>
-
-        <li class="game__info game-info">
-            <svg class="game-info__icon game-info__icon--movie"> 
-                <use href="images/icon-movie.svg"></use> 
-            </svg>
-        <div class="game-info__content">
-        <p>미려한 그래픽, 훌륭한 사운드 이펙트와 아름다운 배경음악의 조화가 만들어내는 실감나는 전장 환경.</p>
-        </div>
-        </li>
-
-        <li class="game__info game-info">
-            <svg class="game-info__icon game-info__icon--check-list"> 
-                <use href="images/icon-check-list.svg"></use> 
-            </svg>
-        <div class="game-info__content">
-        <p>역사적 캠페인과 싱글플레이 미션을 포함한 풍부한 PvE 컨텐츠.</p>
-        </div>
-        </li>
-
-        <li class="game__info game-info">
-            <svg class="game-info__icon game-info__icon--handshake"> 
-                <use href="images/icon-handshake.svg"></use> 
-            </svg>
-        <div class="game-info__content">
-        <p><a href="https://live.warthunder.com/?lang=en">War Thunder Live</a>
-            를 통해 자신만의 War Thunder 컨텐츠를 다른 플레이어와 공유할 수 있으며 인기있는 커스텀 컨텐츠는 수익 공유 파트너 프로그램을 통한 수익 창출도 가능합니다!</p>
-        </div>
-        </li>
-
-    </ul>
-    </div>
-
-
-	<footer class="footer">
-		<p>My Website</p>
-	</footer>
+    <!-- 푸터 영역 -->
+    <footer class="footer">
+        <p>My Website</p>
+    </footer>
     
 </body>
 </html>
